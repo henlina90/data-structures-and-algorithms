@@ -1,6 +1,10 @@
 /**
  * Implement a brute force algorithm for finding the missing number in an array
  */
+
+// for i = 1 to n
+// if n is not in numbers
+// return i
 function missingNumberBruteForce(numbers) {
   let n = numbers.length + 1;
 
@@ -23,6 +27,9 @@ function missingNumberBruteForce(numbers) {
 /**
  * Use an iterative  strategy for finding the missing number in an array
  */
+// expectSum = find the sume of all integers from 1 to n
+// actualSum = find the sum of all numbers in the array
+// return expectedSum - actualSum
 function missingNumberSum(numbers) {
   let n = numbers.length + 1;
   let fullSum = (n * (n + 1)) / 2;

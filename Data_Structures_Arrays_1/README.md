@@ -4,7 +4,8 @@ Here are two problems that involve the use of arrays. For each problem two diffe
 
 ### <b>Tasks</b>
 
-Find the missing number
+### <b>Find the missing number</b>
+
 Given an array of length n-1 containing all the integers from 1 to n with one number missing, find the missing number. The array is not necessarily sorted.
 
 For example, given the array: `[2, 5, 1, 4]` you would say that the number `3` was missing.
