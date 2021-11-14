@@ -21,6 +21,27 @@ class Event {
   getEndMinutes() {
     return Number(this.endTime.split(":")[1]);
   }
+  durationMinutes() {
+    const end = this.getEndHours();
+    const start = this.getStartHours();
+    const startEndHours = (end - start) * 60; // convert hours to mins
+    const startEndMinutes = this.getEndMinutes() + this.getStartMinutes();
+    const duration = startEndHours + startEndMinutes; // add all minutes
+
+    return duration;
+  }
+
+  conflict(Event) {
+    if (Event) {
+      if (this.endTime < Event.startTime || this.startTime > Event.endTime) {
+        return false;
+      }
+      if (this.endTime > Event.startTime || this.startTime < Event.endTime) {
+        return true;
+      }
+    }
+  }
+
   isBefore(other) {
     return (
       this.getEndHours() < other.getStartHours() ||
@@ -28,9 +49,12 @@ class Event {
         this.getEndMinutes() <= other.getStartMinutes())
     );
   }
-  durationMinutes() {
-    return Number(this.getStartMinutes() - this.getEndMinutes());
-  }
 }
 
+// const lunchEvent = new Event("Lunch", "12:00", "13:10", "Chipotle");
+// const meeting = new Event("Meeting", "14:10", "15:30", "Conference room");
+// const soccerGame = new Event("Soccer game", "15:00", "18:00", "Field");
+
+// console.log(lunchEvent.durationMinutes());
+// console.log(meeting.isBefore(lunchEvent)); // > false
 module.exports = Event;
